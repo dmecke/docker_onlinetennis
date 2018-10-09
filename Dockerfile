@@ -2,7 +2,7 @@ FROM php:7.2.10
 
 RUN set -x \
  && apt-get update -y \
- && apt-get install -y  wget apt-transport-https \
+ && apt-get install -y  wget apt-transport-https gnupg \
  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
