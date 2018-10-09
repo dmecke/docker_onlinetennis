@@ -12,11 +12,11 @@ RUN set -x \
  && apt-get install -y git zip nodejs xz-utils libmcrypt-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev libc-client-dev libkrb5-dev libgconf-2-4 google-chrome-stable yarn nodejs mysql-client \
  && pecl install xdebug \
  && pecl install apcu \
+ && pecl install mcrypt \
  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
- && docker-php-ext-install mbstring mcrypt curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif \
- && docker-php-ext-enable xdebug \
- && docker-php-ext-enable apcu \
+ && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif \
+ && docker-php-ext-enable xdebug apcu mcrypt \
  && echo "date.timezone = Europe/Berlin" > /usr/local/etc/php/conf.d/timezone.ini \
  && echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory.ini  \
  && wget -O /usr/local/bin/composer https://getcomposer.org/download/1.7.2/composer.phar \
