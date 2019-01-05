@@ -1,4 +1,4 @@
-FROM php:7.2.10
+FROM php:7.3.0
 
 RUN set -x \
  && apt-get update -y \
