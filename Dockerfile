@@ -16,7 +16,9 @@ RUN set -x \
  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
  && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif \
  && docker-php-ext-enable apcu \
- && docker-php-ext-enable xdebug \
+ && export XDEBUG_PATH=`find / -name "xdebug.so"` \
+ && echo ";zend_extension=$XDEBUG_PATH" > /usr/local/etc/php/conf.d/xdebug.ini && \
+ && echo "xdebug.remote_host="`hostname -i` >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "date.timezone = Europe/Berlin" > /usr/local/etc/php/conf.d/timezone.ini \
  && echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory.ini  \
  && wget -O /usr/local/bin/composer https://getcomposer.org/download/1.7.2/composer.phar \
