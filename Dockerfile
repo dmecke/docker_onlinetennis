@@ -11,7 +11,7 @@ RUN set -x \
  && apt-get update -y \
  && apt-get install -y git zip nodejs xz-utils libzip-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev libc-client-dev libkrb5-dev libgconf-2-4 google-chrome-stable yarn nodejs mysql-client \
  && pecl install apcu \
- && pecl install xdebug-2.7.0rc1 \
+ && pecl install xdebug-2.7.0RC1 \
  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
  && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif \
