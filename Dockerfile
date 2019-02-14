@@ -17,7 +17,7 @@ RUN set -x \
  && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif \
  && docker-php-ext-enable apcu \
  && export XDEBUG_PATH=`find / -name "xdebug.so"` \
- && echo ";zend_extension=$XDEBUG_PATH" > /usr/local/etc/php/conf.d/xdebug.ini && \
+ && echo ";zend_extension=$XDEBUG_PATH" > /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "xdebug.remote_host="`hostname -i` >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "date.timezone = Europe/Berlin" > /usr/local/etc/php/conf.d/timezone.ini \
  && echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory.ini  \
