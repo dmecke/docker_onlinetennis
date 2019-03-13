@@ -14,7 +14,7 @@ RUN set -x \
  && pecl install xdebug-2.7.0RC1 \
  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
- && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif \
+ && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif gmp \
  && docker-php-ext-enable apcu \
  && export XDEBUG_PATH=`find / -name "xdebug.so"` \
  && echo ";zend_extension=$XDEBUG_PATH" > /usr/local/etc/php/conf.d/xdebug.ini \
