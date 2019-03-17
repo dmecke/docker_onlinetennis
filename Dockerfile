@@ -23,7 +23,8 @@ RUN set -x \
  && echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory.ini  \
  && wget -O /usr/local/bin/composer https://getcomposer.org/download/1.7.2/composer.phar \
  && chmod +x /usr/local/bin/composer \
- && wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -O /tmp/chromedriver.zip \
+ && export CHROMEDRIVER_VERSION=`wget -q -O - 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE_'$(google-chrome-stable --version | sed 's/Google Chrome //' | cut -d '.' -f1,2,3)` \
+ && wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip -O /tmp/chromedriver.zip \
  && unzip /tmp/chromedriver.zip -d /usr/local/bin \
  && apt-get autoclean -y \
  && apt-get --purge autoremove -y \
