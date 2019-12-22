@@ -21,7 +21,7 @@ RUN set -x \
  && echo "xdebug.remote_host="`hostname -i` >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "date.timezone = Europe/Berlin" > /usr/local/etc/php/conf.d/timezone.ini \
  && echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory.ini  \
- && wget -O /usr/local/bin/composer https://getcomposer.org/download/1.7.2/composer.phar \
+ && wget -O /usr/local/bin/composer https://getcomposer.org/download/1.9.1/composer.phar \
  && chmod +x /usr/local/bin/composer \
  && export CHROMEDRIVER_VERSION=`wget -q -O - 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE_'$(google-chrome-stable --version | sed 's/Google Chrome //' | cut -d '.' -f1,2,3)` \
  && wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip -O /tmp/chromedriver.zip \
