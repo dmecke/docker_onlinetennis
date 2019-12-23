@@ -1,4 +1,4 @@
-FROM php:7.4.1-stretch
+FROM php:7.4.1
 
 RUN set -x \
  && apt-get update -y \
@@ -9,10 +9,10 @@ RUN set -x \
  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get update -y \
- && apt-get install -y git zip nodejs xz-utils libzip-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev libc-client-dev libkrb5-dev libgconf-2-4 google-chrome-stable yarn nodejs mysql-client \
+ && apt-get install -y git zip nodejs xz-utils libzip-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev libc-client-dev libkrb5-dev libgconf-2-4 google-chrome-stable yarn nodejs default-mysql-client \
  && pecl install apcu \
  && pecl install xdebug-2.9.0 \
- && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+ && docker-php-ext-configure gd --with-freetype --with-jpeg-dir=/usr/include/ \
  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
  && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif gmp \
  && docker-php-ext-enable apcu \
