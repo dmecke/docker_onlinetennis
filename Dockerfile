@@ -13,7 +13,7 @@ RUN set -x \
  && pecl install apcu \
  && pecl install xdebug-2.9.0 \
  && docker-php-ext-configure gd --with-freetype \
- && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+ && PHP_OPENSSL=yes docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
  && docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache pdo_mysql pcntl imap exif gmp \
  && docker-php-ext-enable apcu \
  && export XDEBUG_PATH=`find / -name "xdebug.so"` \
